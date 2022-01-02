@@ -1,23 +1,23 @@
 <template>
     <div class="card">
         <div class="card-image">
-            <img src="https://nick.mtvnimages.com/uri/mgid:arc:content:nick.com:9cd2df6e-63c7-43da-8bde-8d77af9169c7?quality=0.7" alt="Spongebob Image">
+            <img :src="objectCard.image" :alt="objectCard.title">
         </div>
 
         <div class="card-title">
-            Spongebob Squarepants
+            {{ objectCard.title }}
         </div>
 
         <div class="card-year">
-            Year: 1999
+            Year: {{ objectCard.year }}
         </div>
 
         <div class="card-episodes">
-            Episodes: 272
+            Episodes: {{ objectCard.episodes }}
         </div>
 
-        <div class="card-creator">
-            Creator: Stephen Hillenburg
+        <div class="card-minutes">
+            Minutes: {{ objectCard.runtime_in_minutes }}
         </div>
     </div>
 </template>
@@ -25,7 +25,10 @@
 
 <script>
 export default {
-    name: 'SingleCard'
+    name: 'SingleCard',
+    props: {
+        objectCard: Object
+    }
 }
 </script>
 
@@ -57,7 +60,7 @@ export default {
 
     &-year,
     &-episodes,
-    &-creator {
+    &-minutes {
         color: $primary-color;
         font-size: 14px;
         font-weight: bold;
