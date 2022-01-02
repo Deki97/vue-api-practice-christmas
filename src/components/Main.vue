@@ -1,9 +1,11 @@
 <template>
     <main>
         <div class="container">
-            <div class="cards-list">
+            <div v-if="cards.length > 0" class="cards-list">
                 <SingleCard v-for="(item, index) in cards" :key="index" :objectCard="item"/>
             </div>
+
+            <Loader v-else />
         </div>
     </main>
 </template>
@@ -11,12 +13,14 @@
 
 <script>
 import axios from 'axios';
-import SingleCard from './SingleCard.vue'
+import SingleCard from './SingleCard.vue';
+import Loader from './Loader.vue';
 
 export default {
     name: 'Main',
     components: {
-        SingleCard
+        SingleCard,
+        Loader
     },
     data: function() {
         return {
